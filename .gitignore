@@ -1,0 +1,12 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+
+# Cấu hình cục bộ và nhật ký chạy
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db

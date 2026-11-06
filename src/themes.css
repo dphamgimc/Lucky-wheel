@@ -1,0 +1,122 @@
+.theme-control{display:flex;align-items:center;gap:8px;margin-left:auto;margin-right:16px}
+.theme-control label{margin:0;font:500 12px 'Noto Sans Variable',system-ui;letter-spacing:0;color:#626a60}
+.theme-control select{font:500 13px 'Noto Sans Variable',system-ui;color:#36452e;background:#fffefb;border:1px solid #b5bdaf;border-radius:8px;padding:10px 12px;cursor:pointer;max-width:180px;min-height:44px}
+.theme-control select:focus-visible{outline:3px solid var(--action);outline-offset:3px}
+.header-label{margin-left:0;margin-right:0}
+#fireworks{margin:0;padding:0;border:0;background:transparent;max-width:none;max-height:none}
+[data-theme="christmas"]{background:#f3f6ef;color:#284c3e;font-family:'Noto Serif',serif}
+[data-theme="christmas"] header{background:#173f32;border-color:#315a45}
+[data-theme="christmas"] .brand>span,[data-theme="christmas"] .brand{color:#f4d797}
+[data-theme="christmas"] .brand-dot{color:#e99191}
+[data-theme="christmas"] .header-label{color:#d9c999}
+[data-theme="christmas"] .theme-control label{color:#e3d7b1}
+[data-theme="christmas"] .theme-control select,[data-theme="christmas"] .quiet{background:#224e3e;color:#f5e5c3;border-color:#66806a}
+[data-theme="christmas"] h1,[data-theme="christmas"] .brand>span,[data-theme="christmas"] #winner-name{font-family:'Noto Serif',serif}
+[data-theme="christmas"] h1,[data-theme="christmas"] h2{letter-spacing:normal}
+[data-theme="christmas"] h1 em,[data-theme="christmas"] .eyebrow{color:#af3547}
+[data-theme="christmas"] .intro p{color:#6c7f70}
+[data-theme="christmas"] .stage{background:radial-gradient(ellipse at 20% 20%,#f9e7b5aa,transparent 60%),radial-gradient(ellipse at 90% 80%,#5b997c55,transparent 70%),#e8efe3;border-color:#cadac8}
+[data-theme="christmas"] .panel{background:#fffdf6;border-color:#d8dfcf}
+[data-theme="christmas"] .hub{color:#b83243;background:#fff8e3}
+[data-theme="christmas"] .tab.active{color:#a92e41;border-bottom-color:#b83243}
+[data-theme="christmas"] .tab b{background:#f5e5dd;color:#a83a46}
+[data-theme="christmas"] textarea{background:#fffef9;color:#315442;border-color:#d7dfcd;font-family:'Noto Serif',serif}
+[data-theme="christmas"] textarea:focus{border-color:#448362;box-shadow:0 0 0 3px #44836218}
+[data-theme="christmas"] .actions button{background:#eef3e8;color:#3d6e50;border-color:#d2dfca}
+[data-theme="christmas"] .tip{background:#f7eed6;border-color:#eadeb8}
+[data-theme="christmas"] .stage-bottom{border-color:#cbd9c5;color:#73836b}
+[data-theme="christmas"] .spin-caption,[data-theme="christmas"] #status{color:#536f58}
+[data-theme="christmas"] dialog{background:#fffcf0;color:#31513d;border:2px solid #ceae66}
+[data-theme="christmas"] dialog::backdrop{background:#0e2d25a6}
+[data-theme="christmas"] #winner-name{color:#b83243}
+[data-theme="christmas"] .modal-actions button:last-child{background:#b83243;border-color:#b83243}
+[data-theme="christmas"] .result-art{animation:christmas-glow 1.4s ease-in-out infinite alternate}
+@keyframes christmas-glow{from{text-shadow:0 0 8px #edcc73;transform:scale(1)}to{text-shadow:0 0 25px #edcc73;transform:scale(1.1)}}
+@media(max-width:760px){.theme-control{margin-right:8px;gap:0}.theme-control label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.theme-control select{font-size:11px;padding:8px;max-width:120px}header{gap:6px}.quiet{white-space:nowrap}.brand{gap:4px}}
+@media(prefers-reduced-motion:reduce){[data-theme="christmas"] .result-art{animation:none}}
+
+/* Đêm hội trăng rằm: màu tối giữ tên trắng trên vòng quay dễ đọc. */
+[data-theme="mid-autumn"]{background:radial-gradient(ellipse at top,#303457,#151d35 75%);color:#f9e6bb;font-family:'Noto Serif',serif}
+[data-theme="mid-autumn"] header{background:#161e35;border-color:#4c4260}
+[data-theme="mid-autumn"] .brand,[data-theme="mid-autumn"] .brand>span{color:#f4cd7d}
+[data-theme="mid-autumn"] .brand-dot{color:#ec9674}
+[data-theme="mid-autumn"] .header-label,[data-theme="mid-autumn"] .theme-control label{color:#e6c994}
+[data-theme="mid-autumn"] .theme-control select,[data-theme="mid-autumn"] .quiet{background:#29304a;color:#ffdfa2;border-color:#8e795a}
+[data-theme="mid-autumn"] h1,[data-theme="mid-autumn"] .brand>span{font-family:'Noto Serif',serif;letter-spacing:normal}
+[data-theme="mid-autumn"] h1 em,[data-theme="mid-autumn"] .eyebrow{color:#f4c779}
+[data-theme="mid-autumn"] .intro p{color:#d8c8b5}
+[data-theme="mid-autumn"] .stage{position:relative;isolation:isolate;background:radial-gradient(circle at 83% 18%,#ffe6a4 0 28px,#e4c38040 29px,transparent 95px),radial-gradient(ellipse at bottom,#8d42374d,transparent 70%),#222b49;border-color:#66536a}
+[data-theme="mid-autumn"] .stage-top,[data-theme="mid-autumn"] .wheel-wrap,[data-theme="mid-autumn"] .spin-caption,[data-theme="mid-autumn"] #status,[data-theme="mid-autumn"] .stage-bottom{position:relative;z-index:1}
+[data-theme="mid-autumn"] .stage-top{color:#edce9b}
+[data-theme="mid-autumn"] .pill{background:#252d49e6;border-color:#7f6b64;color:#ffe4b7}
+[data-theme="mid-autumn"] .spin-caption,[data-theme="mid-autumn"] #status,[data-theme="mid-autumn"] .stage-bottom{color:#e0c9a9}
+[data-theme="mid-autumn"] .stage-bottom{border-color:#75635f}
+[data-theme="mid-autumn"] .hub{color:#a8393c;background:#fff4d6}
+[data-theme="mid-autumn"] .panel{background:#fff9e9;border-color:#d0b78b;color:#493942}
+[data-theme="mid-autumn"] .panel-heading p,[data-theme="mid-autumn"] label,[data-theme="mid-autumn"] .editor-foot{color:#786457}
+[data-theme="mid-autumn"] .tab{color:#806256}
+[data-theme="mid-autumn"] .tab.active{color:#a8393c;border-bottom-color:#a8393c}
+[data-theme="mid-autumn"] .tab b{background:#f0dfc0;color:#7c4434}
+[data-theme="mid-autumn"] textarea{background:#fffdf5;border-color:#ccb48c;color:#543a34;font-family:'Noto Serif',serif;font-size:15px}
+[data-theme="mid-autumn"] textarea:focus{border-color:#a8393c;box-shadow:0 0 0 3px #a8393c15}
+[data-theme="mid-autumn"] .actions button{background:#f5e6ca;color:#874331;border-color:#d8bd91}
+[data-theme="mid-autumn"] .tip{background:#f6e8cc;border-color:#e4cfa5}
+[data-theme="mid-autumn"] .tip p,[data-theme="mid-autumn"] .tip strong{color:#7a5638}
+[data-theme="mid-autumn"] footer{color:#c9bba9}
+/* Popup giữ kiểu trình bày và pháo hoa của giao diện Mặc định. */
+[data-theme="mid-autumn"] dialog{font-family:'Noto Sans Variable',system-ui,sans-serif}
+#lanterns{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.lantern{position:absolute;left:var(--lane);top:0;width:25px;height:35px;border-radius:45% 45% 38% 38%;background:repeating-linear-gradient(90deg,transparent 0 7px,#ffe6a430 8px 9px),radial-gradient(ellipse,#ffc37a,#c74936 75%);border:1px solid #ffc67b;box-shadow:0 0 22px #efaa4d88;animation:lantern-rise var(--duration) var(--delay) linear infinite;opacity:.8}
+.lantern::before,.lantern::after{content:'';position:absolute;width:17px;height:4px;background:#e6b76c;left:3px;border-radius:2px}
+.lantern::before{top:-3px}.lantern::after{bottom:-3px}
+.lantern i{position:absolute;width:2px;height:14px;background:#d29b54;top:37px;left:11px}
+@keyframes lantern-rise{0%{transform:translate(-8px,700px) rotate(-6deg);opacity:0}12%,82%{opacity:.8}50%{transform:translate(10px,280px) rotate(6deg)}100%{transform:translate(-8px,-70px) rotate(-6deg);opacity:0}}
+@media(max-width:760px){.theme-control select{max-width:165px;width:160px}}
+@media(max-width:500px){header{height:auto;min-height:70px;flex-wrap:wrap;justify-content:center;padding:12px 16px;gap:12px}.theme-control{margin-left:0;margin-right:0}.quiet{margin-left:auto}.brand{margin-right:auto}}
+@media(prefers-reduced-motion:reduce){.lantern{animation:none;top:35%;transform:rotate(-5deg)}.lantern:nth-child(even){top:72%}}
+
+/* Tết: sắc son, lá dong và giấy vàng. */
+[data-theme="tet"]{background:radial-gradient(ellipse at top,#fff3cf,#f8e6d4 80%);color:#65352b;font-family:'Noto Serif',serif}
+[data-theme="tet"] header{background:#8c2330;border-color:#b96150}
+[data-theme="tet"] .brand,[data-theme="tet"] .brand>span{color:#ffe1a0}
+[data-theme="tet"] .brand-dot{color:#ffb692}
+[data-theme="tet"] .header-label,[data-theme="tet"] .theme-control label{color:#ffe0ab}
+[data-theme="tet"] .theme-control select,[data-theme="tet"] .quiet{background:#78222b;border-color:#dcaa71;color:#fff0c8}
+[data-theme="tet"] h1,[data-theme="tet"] .brand>span,[data-theme="tet"] #winner-name{font-family:'Noto Serif',serif;letter-spacing:normal}
+[data-theme="tet"] h1 em,[data-theme="tet"] .eyebrow,[data-theme="tet"] #winner-name{color:#a72936}
+[data-theme="tet"] .intro p{color:#8a5d45}
+[data-theme="tet"] .stage{position:relative;isolation:isolate;background:radial-gradient(ellipse at 15% 25%,#ffe5a2,transparent 65%),radial-gradient(ellipse at bottom right,#d7e8bf,transparent 70%),#f9e8d4;border-color:#d9b78c}
+[data-theme="tet"] .stage-top,[data-theme="tet"] .wheel-wrap,[data-theme="tet"] .spin-caption,[data-theme="tet"] #status,[data-theme="tet"] .stage-bottom{position:relative;z-index:1}
+[data-theme="tet"] .stage-top,[data-theme="tet"] .spin-caption,[data-theme="tet"] #status{color:#80603e}
+[data-theme="tet"] .pill{background:#fff9e8e6;border-color:#e6c9a0;color:#865d30}
+[data-theme="tet"] .stage-bottom{color:#876a46;border-color:#d8bd96}
+[data-theme="tet"] .hub{background:#fff1c7;color:#b32836}
+[data-theme="tet"] .panel{background:#fffcf0;border-color:#dbba91}
+[data-theme="tet"] .tab{color:#8a6656}
+[data-theme="tet"] .tab.active{color:#a72936;border-bottom-color:#b63838}
+[data-theme="tet"] .tab b{background:#f5e2bc;color:#924331}
+[data-theme="tet"] .panel-heading p,[data-theme="tet"] label,[data-theme="tet"] .editor-foot{color:#836d54}
+[data-theme="tet"] textarea{background:#fffef7;color:#573e2e;border-color:#d8c095;font-family:'Noto Serif',serif;font-size:15px}
+[data-theme="tet"] textarea:focus{border-color:#a72936;box-shadow:0 0 0 3px #a7293615}
+[data-theme="tet"] .actions button{background:#f7ebd2;color:#87512d;border-color:#d8c095}
+[data-theme="tet"] .tip{background:#f8eaca;border-color:#e9d3a2}
+[data-theme="tet"] .tip p,[data-theme="tet"] .tip strong{color:#805d32}
+[data-theme="tet"] dialog{background:#fff8df;border:2px solid #d6a64f;color:#793b2e;font-family:'Noto Serif',serif}
+[data-theme="tet"] dialog::backdrop{background:#48202399}
+[data-theme="tet"] .modal-actions button:last-child{background:#a72936;border-color:#a72936}
+[data-theme="tet"] footer{color:#89704c}
+[data-theme="tet"] #spin-button{background:#a72936;border-color:#a72936}
+[data-theme="christmas"] #spin-button{background:#b83243;border-color:#b83243}
+[data-theme="mid-autumn"] #spin-button{background:#f4cd7d;border-color:#f4cd7d;color:#38291e}
+[data-theme="mid-autumn"] #live-note{color:#466736}
+[data-idle-paused="true"] .tet-cake,[data-idle-paused="true"] .lantern{animation-play-state:paused}
+#tet-cakes{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.tet-cake{position:absolute;left:var(--lane);top:0;background:repeating-linear-gradient(90deg,#ffffff08 0 7px,transparent 7px 14px),linear-gradient(135deg,#6d9e46,#255c37);border:2px solid #9bb96e;box-shadow:0 5px 14px #315b372b;animation:cake-rise var(--duration) var(--delay) linear infinite}
+.banh-chung{width:36px;height:36px;border-radius:4px}
+.banh-tet{width:25px;height:55px;border-radius:48% / 13%}
+.tet-cake::before,.tet-cake::after{content:'';position:absolute;background:#f4e3b0;box-shadow:0 0 1px #765f37}
+.tet-cake::before{left:44%;top:0;width:3px;height:100%}
+.tet-cake::after{top:45%;left:0;width:100%;height:3px}
+.banh-tet i{position:absolute;inset:9px -1px;border-top:2px solid #f4e3b0;border-bottom:2px solid #f4e3b0}
+@keyframes cake-rise{0%{transform:translate(-10px,700px) rotate(-15deg);opacity:0}12%,85%{opacity:.9}50%{transform:translate(12px,280px) rotate(18deg)}100%{transform:translate(-10px,-80px) rotate(-15deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.tet-cake{animation:none;top:30%;transform:rotate(-12deg)}.tet-cake:nth-child(even){top:75%}}

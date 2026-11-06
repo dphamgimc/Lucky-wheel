@@ -1,0 +1,80 @@
+import { test, expect } from '@playwright/test';
+test('real wheel workflow: live names, animation, winner, duplicate removal and persisted history',async({page})=>{
+  const errors=[]; page.on('pageerror',e=>errors.push(e.message));
+  await page.addInitScript(()=>{
+    const original=AudioContext.prototype.createOscillator;
+    window.audioNotes=[];
+    AudioContext.prototype.createOscillator=function(){
+      const oscillator=original.call(this), start=oscillator.start.bind(oscillator);
+      oscillator.start=(...args)=>{window.audioNotes.push({frequency:oscillator.frequency.value,state:this.state});return start(...args);};
+      return oscillator;
+    };
+  });
+  await page.goto('/');
+  await page.locator('#names').fill('An\nAn\nAn');
+  await expect(page.locator('#entry-count')).toHaveText('3');
+  await page.screenshot({path:'test-results/desktop.png',fullPage:true});
+  await page.locator('#wheel').click();
+  await expect(page.locator('#names')).toBeDisabled();
+  await expect(page.locator('#status')).toContainText('đang chọn');
+  await expect(page.locator('#result')).toBeVisible({timeout:8000});
+  await expect(page.locator('#winner-name')).toHaveText('An');
+  const notes=await page.evaluate(()=>window.audioNotes);
+  expect(notes).toHaveLength(4);
+  notes.forEach((note,i)=>{expect(note.state).toBe('running');expect(note.frequency).toBeCloseTo([523.25,659.25,783.99,1046.5][i],2);});
+  expect(await page.locator('#disc').evaluate(e=>e.style.transform)).toMatch(/rotate/);
+  expect(await page.locator('#fireworks').evaluate(e=>{const d=e.getContext('2d').getImageData(0,0,e.width,e.height).data;return d.some((v,i)=>i%4===3&&v>0);})).toBeTruthy();
+  await page.screenshot({path:'test-results/winner.png',fullPage:true});
+  await page.getByRole('button',{name:'Xoá tên khỏi danh sách'}).click();
+  await expect(page.locator('#names')).toHaveValue('An\nAn');
+  await page.getByRole('button',{name:/Kết quả/}).click();
+  await expect(page.locator('#history-list li')).toHaveCount(1);
+  await page.reload();
+  await page.getByRole('button',{name:/Kết quả/}).click();
+  await expect(page.locator('#history-list li')).toHaveCount(1);
+  await expect(page.locator('#history-list')).toContainText('An');
+  await page.getByRole('button',{name:/Danh sách/}).click();
+  await expect(page.locator('#names')).toHaveValue('An\nAn');
+  await page.locator('#names').fill('Bình');
+  await page.locator('#wheel').click();
+  await expect(page.locator('#result')).toBeVisible({timeout:8000});
+  await page.getByRole('button',{name:'Đóng',exact:true}).click();
+  await expect(page.locator('#result')).not.toBeVisible();
+  await expect(page.locator('#names')).toHaveValue('Bình');
+  expect(errors).toEqual([]);
+});
+test('phone layout, text updates, controls and empty wheel',async({page})=>{
+  await page.setViewportSize({width:390,height:844}); await page.goto('/');
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+  const stage=await page.locator('.stage').boundingBox(), panel=await page.locator('.panel').boundingBox();
+  expect(panel.y).toBeGreaterThan(stage.y+stage.height);
+  await page.locator('#names').fill('Duy\nAn\nBình');
+  await page.getByRole('button',{name:'↓ A–Z'}).click();
+  await expect(page.locator('#names')).toHaveValue('An\nBình\nDuy');
+  await page.getByRole('button',{name:'⇄ Trộn tên'}).click();
+  expect((await page.locator('#names').inputValue()).split('\n').sort()).toEqual(['An','Bình','Duy'].sort());
+  await page.screenshot({path:'test-results/mobile.png',fullPage:true});
+  await page.getByRole('button',{name:'Xoá tất cả',exact:true}).click();
+  await expect(page.locator('#wheel')).toBeDisabled();
+  await page.locator('#names').fill('Một người');
+  await expect(page.locator('#wheel')).toBeEnabled();
+  await page.getByRole('button',{name:/Âm thanh bật/}).click();
+  await expect(page.locator('#sound')).toHaveAttribute('aria-pressed','false');
+});
+test('phone spin slows down and pointer matches the announced distinct name',async({page})=>{
+  await page.setViewportSize({width:390,height:844}); await page.goto('/');
+  const entries=['Hồng','Bình','Duy','Linh','An'];
+  await page.locator('#names').fill(entries.join('\n'));
+  await page.locator('#wheel').click();
+  const movement=await page.locator('#disc').evaluate(async e=>{
+    const animation=e.getAnimations()[0];
+    async function sample(time){while(animation.currentTime<time)await new Promise(requestAnimationFrame);return animation.effect.getComputedTiming().progress;}
+    const a=await sample(500),b=await sample(1500),c=await sample(3000),d=await sample(4000);
+    return {early:b-a,late:d-c};
+  });
+  expect(movement.early).toBeGreaterThan(movement.late);
+  await expect(page.locator('#result')).toBeVisible({timeout:8000});
+  const rotation=await page.locator('#disc').evaluate(e=>Number(e.style.transform.match(/[\d.]+/)[0]));
+  const index=Math.floor(((360-rotation%360)%360)/(360/entries.length));
+  await expect(page.locator('#winner-name')).toHaveText(entries[index]);
+});
