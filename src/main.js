@@ -8,14 +8,14 @@ import './themes.css';
 import { parseNames, chooseEntry, removeEntry, secureRandom } from './wheel.js';
 import { themes, resolveTheme, pointerColor } from './themes.js';
 
-const defaults = 'Hồng\nCẩm\nLinh\nNhân\nQuý\nKiệt\nBảo\nDuy\nMẹ\nDì Hương';
+const defaults = 'Bé Hồng\nBé Linh\nDuy đẹp zai\nDì Hương\nChụy Cẩm';
 function read(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } }
 let history = read('lucky-history', []);
 if (!Array.isArray(history)) history = [];
 history = history.filter(x => x && typeof x.name === 'string' && typeof x.time === 'string');
 let saved = read('lucky-names', defaults);
 let spinning = false, rotation = 0, winner = null, context;
-let theme = resolveTheme(read('lucky-theme', 'default'));
+let theme = resolveTheme(read('lucky-theme', 'christmas'));
 let colors = themes[theme].colors;
 let celebrationFrame;
 document.querySelector('#app').innerHTML = `

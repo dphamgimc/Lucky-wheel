@@ -6,6 +6,8 @@ Màn hình chính có bố cục hai cột trên máy tính, một cột trên �
 
 ## Giao diện
 
+Khi chưa có dữ liệu lưu, ứng dụng mở với giao diện **Giáng sinh** và danh sách theo thứ tự: **Bé Hồng, Bé Linh, Duy đẹp zai, Dì Hương, Chụy Cẩm**. Danh sách và giao diện đã lưu của người dùng vẫn được giữ khi tải lại.
+
 **Tết Nguyên Đán** dùng sắc đỏ, vàng và xanh lá, phông Noto Serif hỗ trợ tiếng Việt. Bánh tét và bánh chưng bay khi chờ quay; hoa mai vàng năm cánh rơi khi công bố người trúng. Khi bật giảm chuyển động, bánh và hoa được hiển thị tĩnh.
 
 **Tết Trung Thu** có nền đêm trăng, vòng quay đỏ–vàng–xanh và phông Noto Serif hỗ trợ tiếng Việt. Lồng đèn bay trong khu vực vòng quay khi chờ, ẩn trong lúc quay và công bố, rồi xuất hiện lại khi đóng kết quả. Công bố người trúng giữ pháo hoa và popup của giao diện Mặc định. Tuỳ chọn giảm chuyển động chuyển lồng đèn thành trang trí tĩnh.

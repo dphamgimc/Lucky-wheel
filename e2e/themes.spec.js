@@ -1,7 +1,21 @@
 import { test, expect } from '@playwright/test';
 
+test('lần đầu dùng Giáng sinh và năm tên mới, giữ lựa chọn đã lưu', async ({page}) => {
+  await page.goto('/');
+  await expect(page.locator('#theme-select')).toHaveValue('christmas');
+  await expect(page.locator('html')).toHaveAttribute('data-theme','christmas');
+  await expect(page.locator('#names')).toHaveValue('Bé Hồng\nBé Linh\nDuy đẹp zai\nDì Hương\nChụy Cẩm');
+  await expect(page.locator('#entry-count')).toHaveText('5');
+  await page.locator('#theme-select').selectOption('default');
+  await page.locator('#names').fill('Tên đã lưu');
+  await page.reload();
+  await expect(page.locator('#theme-select')).toHaveValue('default');
+  await expect(page.locator('#names')).toHaveValue('Tên đã lưu');
+});
+
 test('đổi giao diện, lưu sau tải lại, màu canvas và bố cục điện thoại', async ({page}) => {
   await page.goto('/');
+  await page.getByLabel('Giao diện', {exact:true}).selectOption('default');
   const background = await page.locator('html').evaluate(e=>getComputedStyle(e).backgroundColor);
   const font = await page.locator('h1').evaluate(e=>getComputedStyle(e).fontFamily);
   await page.getByLabel('Giao diện', {exact:true}).selectOption('christmas');
