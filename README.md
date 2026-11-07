@@ -33,3 +33,11 @@ npm run build
 Test logic kiểm tra khoảng chọn ngẫu nhiên, dòng trống và tên trùng. Test trình duyệt thực hiện nhập tên, quay đủ thời gian, mở/đóng hộp thoại, xoá đúng một tên trùng, tải lại để kiểm tra lịch sử, bố cục 390px và các nút danh sách. Ảnh kiểm chứng được ghi vào `test-results/`.
 
 Tên trùng được tính là các lượt tham gia độc lập. Xoá người trúng chỉ xoá đúng dòng vừa được chọn. Kết quả cũ vẫn còn trong lịch sử. Âm thanh hợp âm “tada” được tổng hợp bằng Web Audio sau thao tác quay; có nút bật/tắt âm thanh.
+
+## GitHub Pages
+
+Trang live: https://dphamgimc.github.io/Lucky-wheel/
+
+Chọn **Settings → Pages → Source: GitHub Actions**. Workflow `.github/workflows/static.yml` tự cài thư viện, chạy test, build và triển khai `dist` khi push lên `main`. Không deploy mã nguồn ở thư mục gốc.
+
+Bản build dùng base `/Lucky-wheel/`; `npm run dev` vẫn chạy ở `/`. Xem trước bản build bằng `npx vite preview --host 127.0.0.1`, mở `http://127.0.0.1:4173/Lucky-wheel/`.
